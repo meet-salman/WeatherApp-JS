@@ -57,7 +57,7 @@ form.addEventListener('submit', (e) => {
             data.forEach(item => {
 
                 weatherContainer.innerHTML += `
-                <div id="weather-box">
+                <div id="weather-box" class="wrap">
         
                     <div  id="location-box" class="lf-padd">
                         <div    class="d-flex justify-between">
