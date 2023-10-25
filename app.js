@@ -2,6 +2,9 @@ const rightnow = new Date;
 const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
+// let nnn = rightnow.toLocaleTimeString()
+// console.log(nnn);
+
 const hours = rightnow.getHours();
 const minutes = rightnow.getMinutes();
 const ampm = hours >= 12 ? 'PM' : 'AM';
@@ -14,13 +17,14 @@ const monthName = months[rightnow.getMonth()];
 const year = rightnow.getFullYear();
 const date = `${dayName}, ${day} ${monthName} ${year}`;
 
-
+// let nnn = rightnow.toLocaleTimeString()
 
 const weatherContainer = document.querySelector('#weather-container');
 const form = document.querySelector('#form');
 const input = document.querySelector('#input');
 
 const data = [];
+
 
 
 
@@ -33,6 +37,7 @@ form.addEventListener('submit', (e) => {
         .then((res) => {
             const obj = res.data
             console.log(obj);
+
 
             let value = {
                 'Name': obj.location.name,
@@ -47,12 +52,12 @@ form.addEventListener('submit', (e) => {
                 'Pressure': obj.current.pressure_mb,
                 'Wind': obj.current.wind_kph,
                 'WindDegree': obj.current.wind_degree,
-                'Gust': obj.current.gust_kph
+                'Gust': obj.current.gust_kph,
+                'Time': obj.location.localtime
             }
 
             data.unshift(value);
             input.value = '';
-
 
             data.forEach(item => {
 
@@ -69,7 +74,7 @@ form.addEventListener('submit', (e) => {
 
                     <div class="lf-padd">
                         <p id="current-weather-head"> Current Weather </p>
-                        <p  id="time">${time} </p>
+                        <p  id="time">${item.Time} </p>
                     </div>
         
                     <div  class="d-flex gap">
@@ -122,3 +127,5 @@ form.addEventListener('submit', (e) => {
 
 
 });
+
+
