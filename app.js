@@ -43,6 +43,7 @@ form.addEventListener('submit', (e) => {
                 'Name': obj.location.name,
                 'Region': obj.location.region,
                 'Country': obj.location.country,
+                'Time': obj.location.localtime,
                 'Text': obj.current.condition.text,
                 'Icon': obj.current.condition.icon,
                 'Temperature': obj.current.temp_c,
@@ -52,15 +53,14 @@ form.addEventListener('submit', (e) => {
                 'Pressure': obj.current.pressure_mb,
                 'Wind': obj.current.wind_kph,
                 'WindDegree': obj.current.wind_degree,
-                'Gust': obj.current.gust_kph,
-                'Time': obj.location.localtime
+                'Gust': obj.current.gust_kph
             }
 
             data.unshift(value);
             input.value = '';
 
             data.forEach(item => {
-weatherContainer.style.color = "white" 
+                weatherContainer.style.color = "white"
                 weatherContainer.innerHTML += `
                 <div id="weather-box" class="wrap">
         
@@ -122,8 +122,8 @@ weatherContainer.style.color = "white"
 
         })
         .catch((rej) => {
-weatherContainer.style.color = "red" 
-weatherContainer.innerHTML = ` <p> Data Not Found .</p> `
+            weatherContainer.style.color = "red"
+            weatherContainer.innerHTML = ` <p> Data Not Found .</p> `
             console.log(rej);
         })
 
