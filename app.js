@@ -60,7 +60,7 @@ form.addEventListener('submit', (e) => {
             input.value = '';
 
             data.forEach(item => {
-
+weatherContainer.style.color = "white" 
                 weatherContainer.innerHTML += `
                 <div id="weather-box" class="wrap">
         
@@ -122,6 +122,8 @@ form.addEventListener('submit', (e) => {
 
         })
         .catch((rej) => {
+weatherContainer.style.color = "red" 
+weatherContainer.innerHTML = ` <p> Data Not Found .</p> `
             console.log(rej);
         })
 
